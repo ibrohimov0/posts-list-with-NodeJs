@@ -13,9 +13,8 @@ const Home = fs.readFileSync("./index.html", "utf-8", (err,data) =>{
     return data
 })
 const a = JSON.parse(Data)
-
-http.createServer(function(req, res) {
+http.createServer(async function(req, res) {
     res.writeHead(200, {"Content-Type": "text/html"})
-    res.write(CreateList(a))
+    await res.write(CreateList(a))
     res.end(Home)
 }).listen(1111)
